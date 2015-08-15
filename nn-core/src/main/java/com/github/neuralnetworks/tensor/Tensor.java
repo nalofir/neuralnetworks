@@ -225,6 +225,11 @@ public class Tensor implements Serializable {
 
 	return result;
     }
+    
+    @Override
+    public String toString() {
+	return "Tensor" + Arrays.toString(getDimensions()) + ": " + Arrays.toString(getElements());
+    }
 
     /**
      * Iterate over the "real" indexes of the elements array
