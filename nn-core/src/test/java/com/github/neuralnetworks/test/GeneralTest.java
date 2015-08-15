@@ -287,6 +287,15 @@ public class GeneralTest {
 
 	assertEquals(2, m.get(0, 1), 0);
 	assertEquals(15, m.get(2, 2), 0);
+	
+	assertEquals(m.getRows(), m.getColumn(0).length);
+	assertEquals(m.getColumns(), m.getRow(0).length);
+	assertEquals(2, m.getRow(0)[1], 0);
+	assertEquals(m.getRow(1)[0], m.getColumn(0)[1], 0);
+	
+	float[] row = {100, 200, 300, 400, 500, 600};
+	m.setRow(0, row);
+	assertEquals(200, m.get(0, 1), 0);
 
 	m = TensorFactory.tensor(1, 6);
 	for (int i = 0; i < m.getElements().length; i++) {

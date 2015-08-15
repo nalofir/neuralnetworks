@@ -25,6 +25,24 @@ public class Matrix extends Tensor {
     public int getColumnElementsDistance() {
 	return getDimensionElementsDistance(getDimensionGlobalIndex(1));
     }
+    
+    public void setColumn(int j, float[] column) {
+	if (j < 0 || j > getColumns() || column.length != getRows()) {
+	    throw new IllegalArgumentException();
+	}
+	
+	for (int i = 0; i < getRows(); i++) {
+	    set(column[i], i, j);
+	}
+    }
+    
+    public float[] getColumn(int j) {
+	float[] column = new float[getRows()];
+	for (int i = 0; i < getRows(); i++) {
+	    column[i] = get(i, j);
+	}
+	return column;
+    }
 
     public int getRows() {
 	return getDimensions()[0];
@@ -32,5 +50,23 @@ public class Matrix extends Tensor {
 
     public int getRowElementsDistance() {
 	return getDimensionElementsDistance(getDimensionGlobalIndex(0));
+    }
+
+    public void setRow(int i, float[] row) {
+	if (i < 0 || i > getRows() || row.length != getColumns()) {
+	    throw new IllegalArgumentException();
+	}
+	
+	for (int j = 0; j < getColumns(); j++) {
+	    set(row[j], i, j);
+	}
+    }
+    
+    public float[] getRow(int i) {
+	float[] row = new float[getColumns()];
+	for (int j = 0; j < getColumns(); j++) {
+	    row[j] = get(i, j);
+	}
+	return row;
     }
 }
