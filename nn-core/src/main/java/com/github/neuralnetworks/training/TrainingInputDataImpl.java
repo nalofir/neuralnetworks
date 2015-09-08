@@ -44,4 +44,9 @@ public class TrainingInputDataImpl implements TrainingInputData {
     public void setTarget(Matrix target) {
         this.target = target;
     }
+    
+    @Override
+    public String toString() {
+	return "TrainingInputDataImpl[input=" + input + ", target=" + target + "]";
+    }
 }

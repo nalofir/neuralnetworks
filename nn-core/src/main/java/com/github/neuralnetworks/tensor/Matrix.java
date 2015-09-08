@@ -1,5 +1,7 @@
 package com.github.neuralnetworks.tensor;
 
+import java.util.Arrays;
+
 
 /**
  * Simple matrix representation with one-dimensional array. This is required,
@@ -68,5 +70,18 @@ public class Matrix extends Tensor {
 	    row[j] = get(i, j);
 	}
 	return row;
+    }
+    
+    public Matrix transpose() {
+	Matrix transposed = TensorFactory.tensor(this.getColumns(), this.getRows());
+	for (int i = 0; i < getRows(); i++) {
+	    transposed.setColumn(i, this.getRow(i));
+	}
+	return transposed;
+    }
+    
+    @Override
+    public String toString() {
+	return "Matrix" + Arrays.toString(getDimensions()) + ": " + Arrays.toString(getElements());
     }
 }

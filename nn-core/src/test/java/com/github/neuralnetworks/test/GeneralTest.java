@@ -296,7 +296,16 @@ public class GeneralTest {
 	float[] row = {100, 200, 300, 400, 500, 600};
 	m.setRow(0, row);
 	assertEquals(200, m.get(0, 1), 0);
+	
+	// transposed
+	Matrix transposed = m.transpose();
+	assertEquals(m.getRows(), transposed.getColumns());
+	assertEquals(m.getColumns(), transposed.getRows());
+	assertEquals(m.get(1, 1), transposed.get(1, 1), 0.0f);
+	assertEquals(m.get(2, 1), transposed.get(1, 2), 0.0f);
+	assertEquals(m.get(0, 2), transposed.get(2, 0), 0.0f);
 
+	// vectors
 	m = TensorFactory.tensor(1, 6);
 	for (int i = 0; i < m.getElements().length; i++) {
 	    m.getElements()[i] = i + 1;
